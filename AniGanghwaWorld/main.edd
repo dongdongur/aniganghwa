@@ -1,0 +1,7 @@
+[main]
+input: base\base_map.scx
+output: out\AniGanghwaWorld_new.scx
+
+[sounds.py]
+[datinit.py]
+[game.py]

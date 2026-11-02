@@ -1,0 +1,94 @@
+// =====================================================================
+//  애니강화월드 (새 버전) - 메인 스크립트
+//  - 1단계: 기본 시스템 뼈대 (강화 / 킬 보상 / 칭호 / 자원)
+//  - 챕터, 보스, 웨이브는 2단계에서 추가
+// =====================================================================
+
+import titles;
+
+// ---------------------------------------------------------------------
+//  강화 설정  (배열 번호 = 목표 등급 ★)
+//    [2★] 250 / 100%   [3★] 500 / 80%   [4★] 1,000 / 60%
+//    [5★] 2,000 / 40%  [6★] 4,000 / 20% [7★] 8,000 / 10%  [8★] 16,000 / 5%
+// ---------------------------------------------------------------------
+const GANG_COST = [0, 0, 250, 500, 1000, 2000, 4000, 8000, 16000];
+const GANG_RATE = [0, 0, 100, 80, 60, 40, 20, 10, 5];   // 성공 확률(%)
+const PITY_LIMIT = 10;      // 천장: 같은 단계에서 10회 실패하면 상위 등급 지급
+const MAX_STAR = 8;
+
+const gangPoint = PVariable();      // 플레이어별 강화포인트
+const stone = PVariable();          // 플레이어별 초월석
+const pity = EUDArray(8 * 9);       // [플레이어 * 9 + 목표등급] 연속 실패 횟수
+
+// 강화 시도
+//   반환값: 0 = 포인트 부족, 1 = 실패, 2 = 성공, 3 = 천장 지급
+function enhance(p, star) {
+    if (star < 2 || star > MAX_STAR) return 0;
+    const cost = GANG_COST[star];
+    if (gangPoint[p] < cost) return 0;
+    gangPoint[p] -= cost;
+
+    const idx = p * 9 + star;
+    if (dwrand() % 100 < GANG_RATE[star]) {
+        pity[idx] = 0;
+        return 2;
+    }
+    pity[idx] += 1;
+    if (pity[idx] >= PITY_LIMIT) {
+        pity[idx] = 0;
+        return 3;
+    }
+    return 1;
+}
+
+// ---------------------------------------------------------------------
+//  킬 보상  (원본 맵 문구 기준)
+// ---------------------------------------------------------------------
+const KILL_COUNT = 19;
+const KILL_REQ   = [   50,  100,  250,  500,  750, 1000, 1500, 2000,  2500,  3000,  4000,  5000,  7500, 10000, 12500, 15000,  20000,  25000,  30000];
+const KILL_ORE   = [  500,    0, 1000,    0, 2500,    0, 7500,    0, 12000,     0, 24000,     0, 45000,     0, 70000,     0, 100000,      0, 100000];
+const KILL_GAS   = [  250,    0,  500,    0, 1250,    0, 2500,    0,  4000,     0,  8000,     0, 15000,     0, 22500,     0,  30000,      0,  30000];
+const KILL_PT    = [    0,  500,    0, 2000,    0, 5000,    0, 7500,     0, 10000,     0, 25000,     0, 50000,     0, 75000,      0, 100000, 100000];
+const KILL_STONE = [    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,     0,     0,     1,     0,     0,      1,      0,      1];
+
+const killStep = PVariable();       // 다음에 받을 킬 보상 번호
+
+function checkKillReward(p) {
+    const step = killStep[p];
+    if (step >= KILL_COUNT) return;
+    const need = KILL_REQ[step];
+    if (!Kills(p, AtLeast, need, "(any unit)")) return;
+
+    dwadd_epd(EPD(0x57F0F0) + p, KILL_ORE[step]);   // 미네랄
+    dwadd_epd(EPD(0x57F120) + p, KILL_GAS[step]);   // 가스
+    gangPoint[p] += KILL_PT[step];
+    stone[p] += KILL_STONE[step];
+    killStep[p] = step + 1;
+
+    setcurpl(p);
+    println("\x07[{}kill 보상] \x04미네랄 +{}  가스 +{}  강화포인트 +{}  초월석 +{}",
+        need, KILL_ORE[step], KILL_GAS[step], KILL_PT[step], KILL_STONE[step]);
+}
+
+// ---------------------------------------------------------------------
+//  메인 루프
+// ---------------------------------------------------------------------
+var started = 0;
+
+function onPluginStart() {
+}
+
+function beforeTriggerExec() {
+}
+
+function afterTriggerExec() {
+    if (started == 0) {
+        started = 1;
+        printAll("\x13\x1f애니강화월드 \x04새 버전 \x05(개발 중)");
+        titles.ShowTitles();
+    }
+
+    foreach (p : EUDLoopPlayer("Human")) {
+        checkKillReward(p);
+    }
+}

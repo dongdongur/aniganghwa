@@ -1,0 +1,4 @@
+__pycache__/
+AniGanghwaWorld/out/
+tools/emu_dump.pkl
+*.pyc

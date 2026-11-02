@@ -1,0 +1,245 @@
+애니강화월드 M1.85 - 보스별 트리거 원본 추출 (자동 해석)
+읽는 법: 조건 => 동작.  Cnt(플레이어,유닛) = 타이머로 쓰는 데스 카운터, L번호 = 로케이션(L036 등), 현재P = 보스 주인
+HP/SH/AR = 게임 중 덮어쓴 뒤의 실제 값
+
+## 165 BOSS 루치 노말  HP 4,000 SH 150 AR 10
+   Switch0 & Bring(현재P,BOSS 루치 노말≥1,L12)  =>  MoveLoc L36→BOSS 루치 노말
+   Switch0 & Bring(현재P,BOSS 루치 노말≥1,L12) & Deaths(P7,BOSS 루치 노말≥180) & Deaths(P7,BOSS 루치 노말≤182)  =>  Cnt(세력1,SOUND)=11 ; Create 1×유닛70(현재P)@L36 ; Kill 유닛70(현재P)@L64
+   Switch0 & Bring(세력1,병력≥1,L12) & Bring(현재P,BOSS 루치 노말≥1,L12)  =>  Cnt(P6,BOSS 루치 노말)+=1 ; Cnt(P7,BOSS 루치 노말)+=1
+   Switch0 & Bring(현재P,BOSS 루치 노말≥1,L12) & Deaths(현재P,BOSS 루치 노말≥120)  =>  Cnt(세력1,SOUND)=10 ; Cnt(현재P,BOSS 루치 노말)=0 ; Create 1×유도탄(현재P)@L36 ; Kill 유도탄(현재P)@L64 ; Create 1×Ｄ 오공 노말(현재P)@L36 ; Order Ｄ 오공 노말 ; Wait 500ms ; Remove Ｄ 오공 노말(현재P)
+   Switch0 & Command(현재P,BOSS 루치 노말=0) & Switch0  =>  
+## 172 BOSS 루치 레오파드  HP 9,999 SH 200 AR 20
+   Switch0 & Bring(현재P,BOSS 루치 레오파드≥1,L12) & Deaths(현재P,BOSS 루치 노말≥120)  =>  Cnt(세력1,SOUND)=10 ; Cnt(현재P,BOSS 루치 노말)=0 ; Create 1×유닛43(현재P)@L36 ; Kill 유닛43(현재P)@L64 ; Create 1×Ｃ 오공 계왕권(현재P)@L36 ; Order Ｃ 오공 계왕권 ; Wait 500ms ; Remove Ｃ 오공 계왕권(현재P)
+   Switch0 & Bring(현재P,BOSS 루치 레오파드≥1,L12) & Deaths(P7,BOSS 루치 노말≥180) & Deaths(P7,BOSS 루치 노말≤182)  =>  Cnt(세력1,SOUND)=11 ; Create 1×유닛70(현재P)@L36 ; Kill 유닛70(현재P)@L64
+   Switch0 & Bring(세력1,병력≥1,L12) & Bring(현재P,BOSS 루치 레오파드≥1,L12) & Switch0  =>  Cnt(P8,BOSS 루치 노말)+=1
+   Switch0 & Bring(현재P,BOSS 루치 레오파드≥1,L12) & Deaths(P8,BOSS 루치 노말≥300)  =>  Cnt(세력1,SOUND)=12 ; Cnt(P8,BOSS 루치 노말)=0 ; Cnt(P8,BOSS 루치 레오파드)=10
+   Switch0 & Bring(현재P,BOSS 루치 레오파드≥1,L12)  =>  MoveLoc L36→BOSS 루치 레오파드
+   Switch0 & Bring(세력1,병력≥1,L12) & Bring(현재P,BOSS 루치 레오파드≥1,L12)  =>  Cnt(P6,BOSS 루치 노말)+=1 ; Cnt(P7,BOSS 루치 노말)+=1
+## 170 BOSS 우치하 사스케  HP 15,000 SH 400 AR 20
+   Switch0 & Bring(세력1,병력≥1,L25) & Bring(현재P,BOSS 우치하 사스케≥1,L25)  =>  Cnt(P8,BOSS 우치하 사스케)+=1 ; Cnt(P7,BOSS 우치하 사스케)+=1
+   Switch0 & Bring(현재P,BOSS 우치하 사스케≥1,L25) & Deaths(현재P,흑염≥400)  =>  Cnt(세력1,SOUND)=22 ; Cnt(현재P,흑염)=0 ; Cnt(P8,흑염)=10
+   Switch0 & Bring(현재P,BOSS 우치하 사스케≥1,L25) & Deaths(P7,BOSS 우치하 사스케≥200)  =>  Cnt(세력1,SOUND)=21 ; Cnt(P7,BOSS 우치하 사스케)=0 ; Create 1×천 본 앵(P8)@L36 ; Kill 천 본 앵(P8)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 우치하 사스케 ; Wait 1ms ; Cnt(현재P,유닛60)=100 ; Create 1×Ｙ 셋쇼마루 대요괴(현재P)@L36 ; Kill Ｙ 셋쇼마루 대요괴(현재P)@L64
+   Switch0 & Command(현재P,BOSS 우치하 사스케=0) & Switch0  =>  
+   Switch0 & Bring(현재P,BOSS 우치하 사스케≥1,L25) & Deaths(P8,BOSS 우치하 사스케≥120)  =>  Cnt(세력1,SOUND)=20 ; Cnt(P8,BOSS 우치하 사스케)=0 ; Create 1×LV.1 칠무해(현재P)@L36 ; Kill LV.1 칠무해(현재P)@L64 ; Create 1×적(赫)(현재P)@L36 ; Order 적(赫) ; Wait 1000ms ; Remove 적(赫)(현재P)
+   Switch0 & Bring(세력1,병력≥1,L25) & Bring(현재P,BOSS 우치하 사스케≥1,L25) & Switch0  =>  Cnt(현재P,흑염)+=1
+   Switch0 & Bring(현재P,BOSS 우치하 사스케≥1,L25)  =>  MoveLoc L36→BOSS 우치하 사스케
+## 163 BOSS 쿠치키 뱌쿠야  HP 30,000 SH 750 AR 30
+   Switch0 & Command(현재P,BOSS 쿠치키 뱌쿠야=0) & Switch0  =>  
+   Switch0 & Bring(세력1,병력≥1,L26) & Bring(현재P,BOSS 쿠치키 뱌쿠야≥1,L26)  =>  Cnt(P8,BOSS 쿠치키 뱌쿠야)+=1 ; Cnt(P7,BOSS 쿠치키 뱌쿠야)+=1
+   Switch0 & Bring(세력1,병력≥1,L26) & Bring(현재P,천 본 앵=0,L64) & Bring(현재P,BOSS 쿠치키 뱌쿠야≥1,L64)  =>  Cnt(P6,천 본 앵)+=1
+   Switch0 & Bring(현재P,BOSS 쿠치키 뱌쿠야≥1,L26) & Deaths(P8,천 본 앵≥400)  =>  Cnt(세력1,SOUND)=32 ; Cnt(P8,천 본 앵)=0 ; Cnt(P8,장(掌))=10
+   Switch0 & Bring(세력1,병력≥1,L26) & Bring(현재P,BOSS 쿠치키 뱌쿠야≥1,L26) & Switch0  =>  Cnt(P8,천 본 앵)+=1
+   Switch0 & Bring(현재P,BOSS 쿠치키 뱌쿠야≥1,L26) & Deaths(P8,BOSS 쿠치키 뱌쿠야≥180)  =>  Cnt(세력1,SOUND)=31 ; Cnt(P8,BOSS 쿠치키 뱌쿠야)=0 ; Create 1×LV.3 아카츠키(현재P)@L36 ; Kill LV.3 아카츠키(현재P)@L64 ; Create 1×유도탄(현재P)@L36
+   Bring(현재P,BOSS 쿠치키 뱌쿠야≥1,L26) & Bring(현재P,유도탄≥1,L64)  =>  MoveLoc L47→유도탄 ; MoveLoc L46→병력 ; Order 유도탄 ; Cnt(현재P,유도탄)+=1 ; Cnt(P8,BOSS 쿠치키 뱌쿠야)=0
+   Switch0 & Bring(현재P,BOSS 쿠치키 뱌쿠야≥1,L26)  =>  MoveLoc L36→BOSS 쿠치키 뱌쿠야
+   Bring(현재P,BOSS 쿠치키 뱌쿠야≥1,L26) & Bring(현재P,유도탄≥1,L64) & Bring(현재P,폭발=0,L47)  =>  Create 1×폭발(현재P)@L47
+## 169 BOSS 초대형거인  HP 80,000 SH 800 AR 80
+   Elapsed≥30 & Bring(P8,BOSS 갑옷거인=0,L87) & Bring(P8,BOSS 초대형거인=0,L87) & Bring(P8,BOSS 여성형 거인=0,L87)  =>  Create 1×BOSS 짐슴형거인(현재P)@L87 ; Create 1×LV.2 거 인 (巨人)(현재P)@L87 ; RunAI
+## 164 BOSS 갑옷거인  HP 88,888 SH 888 AR 88
+   Elapsed≥30 & Bring(P8,BOSS 갑옷거인=0,L87) & Bring(P8,BOSS 초대형거인=0,L87) & Bring(P8,BOSS 여성형 거인=0,L87)  =>  Create 1×BOSS 짐슴형거인(현재P)@L87 ; Create 1×LV.2 거 인 (巨人)(현재P)@L87 ; RunAI
+## 154 BOSS 여성형 거인  HP 99,999 SH 999 AR 99
+   Switch0 & Bring(현재P,BOSS 여성형 거인≥1,L66) & Deaths(P7,BOSS 여성형 거인≥200)  =>  Cnt(P7,BOSS 여성형 거인)=0 ; Invincible ; Invincible ; Invincible ; Create 1×적(赫)(현재P)@L36 ; Kill 적(赫)(현재P)@L64
+   Switch0 & Command(현재P,BOSS 여성형 거인≥1)  =>  Order BOSS 여성형 거인 ; MoveLoc L36→BOSS 여성형 거인 ; Create 1×유닛70(현재P)@L36 ; Kill 유닛70(현재P)@L64
+   Switch0 & Bring(세력1,병력≥1,L66) & Bring(현재P,BOSS 여성형 거인≥1,L66)  =>  Cnt(P7,BOSS 여성형 거인)+=1
+   Switch0 & Bring(P6,BOSS 여성형 거인≥1,L65)  =>  Sound ; Text:You Defeat ; DEFEAT
+   Switch0 & Bring(현재P,BOSS 여성형 거인≥1,L66) & Deaths(P7,BOSS 여성형 거인≥180) & Deaths(P7,BOSS 여성형 거인≤198)  =>  Invincible ; Shield BOSS 여성형 거인=100% ; Create 1×유닛70(현재P)@L36 ; Kill 유닛70(현재P)@L64
+   Switch0 & Command(현재P,BOSS 여성형 거인≥1) & Bring(현재P,BOSS 여성형 거인=0,L42)  =>  Shield BOSS 여성형 거인=50%
+   Elapsed≥30 & Bring(P8,BOSS 갑옷거인=0,L87) & Bring(P8,BOSS 초대형거인=0,L87) & Bring(P8,BOSS 여성형 거인=0,L87)  =>  Create 1×BOSS 짐슴형거인(현재P)@L87 ; Create 1×LV.2 거 인 (巨人)(현재P)@L87 ; RunAI
+   Switch0 & Bring(P6,BOSS 여성형 거인≥1,L65)  =>  Sound ; Text:You Defeat ; DEFEAT
+   Switch0 & Bring(P6,BOSS 여성형 거인≥1,L65)  =>  Sound ; Text:You Defeat ; DEFEAT
+   Switch0 & Bring(P6,BOSS 여성형 거인≥1,L65)  =>  Sound ; Text:You Defeat ; DEFEAT
+## 159 BOSS 짐슴형거인  HP 150,000 SH 1,500 AR 50
+   Switch0 & Bring(현재P,BOSS 짐슴형거인≥1,L56) & Deaths(P5,BOSS 짐슴형거인≥360) & Switch0  =>  Cnt(P5,BOSS 짐슴형거인)=0 ; Create 1×Z 네테로 회장(현재P)@L36 ; Kill Z 네테로 회장(현재P)@L64 ; Kill 건물(P5)@L56 ; Kill 병력(P5)@L56
+   Elapsed≥30 & Bring(P8,BOSS 짐슴형거인=0,L87) & Deaths(P8,BOSS 짐슴형거인≥1)  =>  Create 0×BOSS 마신 핸드릭슨(현재P)@L87 ; Create 1×LV.4 마신족 (魔新)(현재P)@L87 ; RunAI
+   Bring(현재P,Z 리바이 병장=1,L68) & Bring(현재P,Z 에드워드 엘릭=1,L68) & Bring(현재P,STAGE≥1,L87) & C21 & Bring(현재P,초월석 <재료>=3,L68) & Command(세력1,[θ] 종미의 거인=0) & Deaths(현재P,신화≤15) & C5 & Switch0  =>  
+   Switch0 & Bring(현재P,BOSS 짐슴형거인≥1,L56) & Deaths(P7,BOSS 짐슴형거인≥80)  =>  Create 1×적(赫)(현재P)@L36 ; Kill 적(赫)(현재P)@L64 ; Create 1×LV.2 거 인 (巨人)(현재P)@L36 ; Cnt(P7,BOSS 짐슴형거인)=0
+   Switch0 & Bring(현재P,BOSS 짐슴형거인≥1,L56)  =>  Cnt(P7,BOSS 짐슴형거인)+=1 ; Cnt(P5,BOSS 짐슴형거인)+=1 ; MoveLoc L36→BOSS 짐슴형거인
+   Switch0 & Bring(현재P,BOSS 짐슴형거인≥1,L56) & Deaths(P5,BOSS 짐슴형거인≥360) & Switch0  =>  Cnt(P5,BOSS 짐슴형거인)=0 ; Create 1×Z 네테로 회장(현재P)@L36 ; Kill Z 네테로 회장(현재P)@L64 ; Kill 건물(P5)@L56 ; Kill 병력(P5)@L56
+   Switch0 & Bring(현재P,BOSS 짐슴형거인≥1,L56) & Deaths(P5,BOSS 짐슴형거인≥360) & Switch0  =>  Cnt(P5,BOSS 짐슴형거인)=0 ; Create 1×Z 네테로 회장(현재P)@L36 ; Kill Z 네테로 회장(현재P)@L64 ; Kill 건물(P5)@L56 ; Kill 병력(P5)@L56
+## 167 BOSS 샬롯 카타쿠리  HP 350,000 SH 3,000 AR 80
+   Switch0 & Bring(현재P,BOSS 샬롯 카타쿠리≥1,L12) & Deaths(P7,BOSS 샬롯 카타쿠리≥450)  =>  Cnt(세력1,SOUND)=51 ; Cnt(세력1,SetLight데스값)=10 ; Cnt(P7,BOSS 샬롯 카타쿠리)=0 ; Create 1×BOSS 쿠치키 뱌쿠야(P8)@L36 ; Remove BOSS 쿠치키 뱌쿠야(P8) ; Create 1×BOSS 쿠치키 뱌쿠야(P7)@L36 ; Kill BOSS 쿠치키 뱌쿠야(P7)@L64 ; Energy 병력=0% ; Shield 병력=0% ; HP 병력=100% ; HP 병력=100% ; HP 병력=100% ; HP 병력=100% ; Cnt(현재P,무적)=50
+   Switch0 & Bring(현재P,BOSS 샬롯 카타쿠리≥1,L12) & Deaths(P5,BOSS 샬롯 카타쿠리≥400)  =>  Cnt(세력1,SOUND)=52 ; Cnt(P5,BOSS 샬롯 카타쿠리)=0 ; Create 1×폭파(P8)@L12
+   Bring(현재P,BOSS 샬롯 카타쿠리≥1,L12) & Bring(현재P,BOSS 샬롯 카타쿠리=0,L82)  =>  
+   Switch0 & Bring(현재P,BOSS 샬롯 카타쿠리≥1,L12)  =>  MoveLoc L36→BOSS 샬롯 카타쿠리
+   Switch0 & Bring(세력1,병력≥1,L12) & Bring(현재P,BOSS 샬롯 카타쿠리≥1,L12)  =>  Cnt(P8,BOSS 샬롯 카타쿠리)+=1 ; Cnt(P7,BOSS 샬롯 카타쿠리)+=2 ; Cnt(P5,BOSS 샬롯 카타쿠리)+=1
+   Switch0 & Bring(현재P,BOSS 샬롯 카타쿠리≥1,L12) & Deaths(P8,BOSS 샬롯 카타쿠리≥180)  =>  Cnt(세력1,SOUND)=50 ; Cnt(P8,BOSS 샬롯 카타쿠리)=0 ; Create 1×LV.2 거 인 (巨人)(현재P)@L36 ; Kill LV.2 거 인 (巨人)(현재P)@L64 ; Create 1×폭파(현재P)@L36 ; Wait 2500ms ; Cnt(P8,BOSS 샬롯 카타쿠리)=0 ; Remove 폭파(현재P)
+   Switch0 & Switch0 & Bring(세력1,병력≥1,L12) & Bring(현재P,BOSS 샬롯 카타쿠리≥1,L12)  =>  Cnt(P8,BOSS 샬롯 카타쿠리)+=1 ; Cnt(P7,BOSS 샬롯 카타쿠리)+=1
+## 171 BOSS 페 인 육도  HP 150,000 SH 1,500 AR 65
+   Switch0 & Bring(세력1,병력≥1,L25) & Bring(현재P,BOSS 페 인 육도≥1,L25)  =>  Cnt(P8,BOSS 페 인 육도)+=1 ; Cnt(P7,BOSS 페 인 육도)+=1
+   Switch0 & Bring(현재P,BOSS 페 인 육도≥1,L25) & Deaths(P8,BOSS 페 인 육도≥360)  =>  Cnt(세력1,SOUND)=60 ; Cnt(세력1,LV.3 아카츠키)=1 ; Cnt(P8,BOSS 페 인 육도)=0 ; Create 1×BOSS 페 인 육도(현재P)@L25 ; Create 1×LV.3 아카츠키(현재P)@L25 ; Create 1×적(赫)(현재P)@L25 ; Kill 적(赫)(현재P)@L64 ; Shield 병력=0%
+   Switch0 & Bring(현재P,BOSS 페 인 육도≥1,L25) & Deaths(P7,BOSS 페 인 육도≥600)  =>  Cnt(세력1,SOUND)=61 ; Cnt(P7,BOSS 페 인 육도)=0 ; Cnt(P7,BOSS 천상도 페 인)=40 ; Create 1×천 본 앵(P8)@L25 ; Remove 천 본 앵(P8)
+   Switch0 & Bring(현재P,BOSS 페 인 육도≥1,L25)  =>  MoveLoc L36→BOSS 페 인 육도
+## 173 BOSS 천상도 페 인  HP 850,000 SH 4,000 AR 100
+   Switch0 & Bring(현재P,BOSS 천상도 페 인≥1,L25)  =>  MoveLoc L36→BOSS 천상도 페 인
+   Switch0 & Bring(현재P,BOSS 천상도 페 인≥1,L25) & Deaths(P8,BOSS 천상도 페 인≥450)  =>  Cnt(세력1,SOUND)=62 ; Cnt(P8,BOSS 천상도 페 인)=0 ; Create 1×[ψ] 이치고 천년혈전(현재P)@L25 ; Kill [ψ] 이치고 천년혈전(현재P)@L64 ; Wait 5ms ; MoveUnit 병력 ; Create 1×라의 익신룡 DM(현재P)@L36 ; Kill 라의 익신룡 DM(현재P)@L64 ; Shield 병력=0%
+   Switch0 & Bring(현재P,BOSS 천상도 페 인≥1,L25) & Deaths(P7,BOSS 페 인 육도≥600)  =>  Cnt(세력1,SOUND)=61 ; Cnt(P7,BOSS 페 인 육도)=0 ; Cnt(P7,BOSS 천상도 페 인)=50 ; Create 1×천 본 앵(P8)@L25 ; Remove 천 본 앵(P8)
+   Switch0 & Bring(세력1,병력≥1,L25) & Bring(현재P,BOSS 천상도 페 인≥1,L25)  =>  Cnt(P7,BOSS 페 인 육도)+=2 ; Cnt(P8,BOSS 천상도 페 인)+=1 ; Cnt(P6,BOSS 천상도 페 인)+=1
+   Bring(현재P,BOSS 천상도 페 인≥1,L25) & Bring(현재P,BOSS 천상도 페 인=0,L82)  =>  
+   Switch0 & Bring(현재P,BOSS 천상도 페 인≥1,L25) & Deaths(P6,BOSS 천상도 페 인≥500)  =>  Cnt(세력1,SOUND)=63 ; Cnt(P6,BOSS 천상도 페 인)=0 ; Cnt(P5,BOSS 천상도 페 인)=10 ; Create 1×폭발(P8)@L36 ; Create 1×Ａ 나루토 질풍전(현재P)@L36 ; Create 1×Ａ 이누야샤 붉은철쇄아(현재P)@L36 ; Order 병력
+## 155 BOSS 우르키오라  쉬퍼  HP 650,000 SH 4,500 AR 100
+   Bring(현재P,BOSS 우르키오라  쉬퍼≥1,L26) & Bring(현재P,BOSS 우르키오라  쉬퍼=0,L82)  =>  
+   Switch0 & Bring(세력1,병력≥1,L26) & Bring(현재P,BOSS 우르키오라  쉬퍼≥1,L26)  =>  Cnt(P7,BOSS 우르키오라  쉬퍼)+=1 ; Cnt(P8,BOSS 우르키오라  쉬퍼)+=1
+   Switch0 & Bring(현재P,BOSS 우르키오라  쉬퍼≥1,L26) & Deaths(P8,BOSS 우르키오라  쉬퍼≥360)  =>  Cnt(세력1,SOUND)=70 ; Cnt(P8,BOSS 우르키오라  쉬퍼)=0 ; Create 1×유닛84(현재P)@L36 ; Kill 유닛84(현재P)@L64 ; Create 1×Ｓ+ 이누야샤 용린철쇄아(현재P)@L36 ; Order Ｓ+ 이누야샤 용린철쇄아 ; Wait 1000ms ; Remove Ｓ+ 이누야샤 용린철쇄아(현재P)
+   Switch0 & Bring(현재P,BOSS 우르키오라  쉬퍼≥1,L26)  =>  MoveLoc L36→BOSS 우르키오라  쉬퍼
+## 174 BOSS 우르키오라 2차해방  HP 1,200,000 SH 5,000 AR 125
+   Switch0 & Bring(현재P,BOSS 우르키오라 2차해방≥1,L26)  =>  MoveLoc L36→BOSS 우르키오라 2차해방
+   Switch0 & Bring(현재P,BOSS 우르키오라 2차해방≥1,L26) & Deaths(P7,BOSS 우르키오라  쉬퍼≥200)  =>  Cnt(세력1,SOUND)=71 ; Cnt(P7,BOSS 우르키오라  쉬퍼)=0 ; Cnt(현재P,무적)=30 ; Create 1×[ψ] 이치고 천년혈전(현재P)@L36 ; Kill [ψ] 이치고 천년혈전(현재P)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 우르키오라 2차해방 ; Wait 1ms ; Shield 병력=0% ; Create 1×Ｙ 셋쇼마루 대요괴(현재P)@L36 ; Kill Ｙ 셋쇼마루 대요괴(현재P)@L64
+   Switch0 & Bring(세력1,병력≥1,L26) & Bring(현재P,BOSS 우르키오라 2차해방≥1,L26)  =>  Cnt(P7,BOSS 우르키오라  쉬퍼)+=2 ; Cnt(P8,BOSS 우르키오라  쉬퍼)+=2 ; Cnt(P6,BOSS 우르키오라 2차해방)+=1
+   Switch0 & Bring(현재P,BOSS 우르키오라 2차해방≥1,L26) & Deaths(P6,BOSS 우르키오라 2차해방≥500)  =>  Cnt(세력1,SOUND)=72 ; Cnt(P6,BOSS 우르키오라 2차해방)=0 ; Cnt(P5,BOSS 우르키오라 2차해방)=10 ; Create 1×BOSS 천상도 페 인(P8)@L36
+   Bring(현재P,BOSS 우르키오라 2차해방≥1,L26) & Bring(현재P,BOSS 우르키오라 2차해방=0,L82)  =>  
+   Switch0 & Bring(현재P,BOSS 우르키오라 2차해방≥1,L26) & Deaths(P8,BOSS 우르키오라  쉬퍼≥360)  =>  Cnt(세력1,SOUND)=70 ; Cnt(P8,BOSS 우르키오라  쉬퍼)=0 ; Create 1×유닛84(현재P)@L36 ; Kill 유닛84(현재P)@L64 ; Create 1×Ｓ+ 이누야샤 용린철쇄아(현재P)@L36 ; Order Ｓ+ 이누야샤 용린철쇄아 ; Wait 1000ms ; Remove Ｓ+ 이누야샤 용린철쇄아(현재P)
+## 150 BOSS 마신 핸드릭슨  HP 1,700,000 SH 7,000 AR 150
+   Switch0 & Bring(현재P,BOSS 마신 핸드릭슨=0,L93) & Command(현재P,BOSS 마신 핸드릭슨≥1)  =>  MoveUnit BOSS 마신 핸드릭슨
+   Switch0 & Bring(현재P,BOSS 마신 핸드릭슨≥1,L93)  =>  MoveLoc L36→BOSS 마신 핸드릭슨
+   Switch0 & Bring(현재P,LV.4 마신족 (魔新)=0,L94) & Bring(현재P,BOSS 마신 핸드릭슨≥1,L93)  =>  Create 1×LV.4 마신족 (魔新)(현재P)@L94
+   Switch0 & Bring(현재P,BOSS 마신 핸드릭슨≥1,L93) & Deaths(P7,BOSS 마신 핸드릭슨≥240)  =>  Cnt(P7,BOSS 마신 핸드릭슨)=0 ; Create 1×유닛70(현재P)@L36 ; Kill 유닛70(현재P)@L64 ; Create 1×흑염(현재P)@L36 ; Wait 1500ms ; Remove 흑염(현재P)
+   Command(현재P,BOSS 마신 핸드릭슨≥1) & Bring(현재P,BOSS 마신 핸드릭슨=0,L87)  =>  MoveUnit BOSS 마신 핸드릭슨
+   Elapsed≥30 & Bring(P8,BOSS 마신 핸드릭슨=0,L87) & Deaths(P8,BOSS 마신 핸드릭슨≥1)  =>  Create 0×BOSS † 십 계 †(현재P)@L87 ; RunAI
+   Switch0 & Bring(세력1,병력≥1,L93) & Bring(현재P,BOSS 마신 핸드릭슨≥1,L93)  =>  Cnt(P7,BOSS 마신 핸드릭슨)+=1
+## 201 BOSS † 십 계 †  HP 444,444 SH 8,000 AR 175
+   Switch0 & Bring(현재P,BOSS † 십 계 †≤4,L93) & Bring(현재P,BOSS † 십 계 †≥1,L93) & Switch0  =>  Cnt(P7,BOSS † 십 계 †)+=1
+   Elapsed≥30 & Bring(P8,BOSS † 십 계 †=0,L87) & Deaths(P8,BOSS † 십 계 †≥10)  =>  Create 0×BOSS 에스타롯사(현재P)@L87 ; Create 0×BOSS † 십 계 †(현재P)@L87 ; RunAI
+   Switch0 & Bring(현재P,BOSS † 십 계 †≤4,L93) & Bring(현재P,BOSS † 십 계 †≥1,L93) & Deaths(P7,BOSS † 십 계 †≥700)  =>  Cnt(P7,BOSS † 십 계 †)=0 ; Create 0×BOSS † 십 계 †(현재P)@L93 ; Create 0×적(赫)(현재P)@L93 ; Kill 적(赫)(현재P)@L64
+   Switch0 & Bring(현재P,LV.4 마신족 (魔新)=0,L94) & Bring(현재P,BOSS † 십 계 †≥1,L93)  =>  Create 1×LV.4 마신족 (魔新)(현재P)@L94
+## 152 BOSS 에스타롯사  HP 1,800,000 SH 10,000 AR 200
+   Switch0 & Bring(현재P,BOSS 에스타롯사≥1,L93)  =>  MoveLoc L36→BOSS 에스타롯사
+   Bring(현재P,Z 에스카노르 라이온씬=1,L68) & Bring(현재P,Ｘ 나츠 칠염룡 모드=3,L68) & C5 & C21 & Countdown≥12 & Countdown≤62 & Bring(현재P,초월석 <재료>=3,L68) & Command(세력1,[ν] 멜리오다스 드래곤씬=0) & Deaths(현재P,신화≤15)  =>  
+   Switch0 & Bring(현재P,BOSS 에스타롯사=0,L93) & Command(현재P,BOSS 에스타롯사≥1)  =>  MoveUnit BOSS 에스타롯사
+   Elapsed≥30 & Bring(P8,BOSS 에스타롯사=0,L87) & Deaths(P8,BOSS 에스타롯사≥1)  =>  Create 0×BOSS 프리저(현재P)@L87 ; Create 0×LV.6 괴인(현재P)@L87 ; RunAI
+   Switch0 & Bring(현재P,BOSS 에스타롯사≥1,L93) & Deaths(P7,BOSS 에스타롯사≥360)  =>  Create 0×BOSS † 십 계 †(현재P)@L36 ; Cnt(세력1,SOUND)=80 ; Cnt(P7,BOSS 에스타롯사)=0 ; Cnt(P5,BOSS 에스타롯사)=10
+   Switch0 & Bring(현재P,LV.4 마신족 (魔新)=0,L94) & Bring(현재P,BOSS 에스타롯사≥1,L93)  =>  Create 1×LV.4 마신족 (魔新)(현재P)@L94
+## 148 BOSS 카이도우  HP 2,000,000 SH 15,000 AR 210
+   Switch0 & Bring(현재P,BOSS 카이도우≥1,L12)  =>  MoveLoc L36→BOSS 카이도우
+   Switch0 & Bring(현재P,BOSS 카이도우≥1,L12) & Deaths(P8,BOSS 카이도우≥400)  =>  Cnt(세력1,SOUND)=91 ; Cnt(세력1,SetLight데스값)=5 ; Cnt(P8,BOSS 카이도우)=0 ; Create 1×BOSS 쿠치키 뱌쿠야(P8)@L36 ; Remove BOSS 쿠치키 뱌쿠야(P8) ; Create 1×BOSS 쿠치키 뱌쿠야(P7)@L36 ; Kill BOSS 쿠치키 뱌쿠야(P7)@L64 ; Energy 병력=0% ; Shield 병력=0% ; HP 병력=100% ; HP 병력=100% ; HP 병력=100% ; HP 병력=100% ; Cnt(현재P,무적)=30
+   Switch0 & Bring(현재P,BOSS 카이도우≥1,L12) & Deaths(P7,BOSS 카이도우≥200)  =>  Cnt(세력1,SOUND)=90 ; Cnt(P7,BOSS 카이도우)=0 ; Create 1×유닛70(현재P)@L36 ; Kill 유닛70(현재P)@L64 ; Create 1×Ｓ+ 나루토 선인모드(현재P)@L36 ; Order Ｓ+ 나루토 선인모드 ; Cnt(현재P,무적)+=10 ; Wait 1000ms ; Remove Ｓ+ 나루토 선인모드(현재P)
+   Switch0 & Bring(현재P,BOSS 카이도우≥1,L12) & Bring(세력1,병력≥1,L12)  =>  Cnt(P7,BOSS 카이도우)+=1 ; Cnt(P8,BOSS 카이도우)+=1
+## 147 BOSS카이도우인수형  HP 3,000,000 SH 20,000 AR 220
+   Command(현재P,BOSS카이도우인수형≥1) & Deaths(P5,BOSS카이도우인수형≥40) & Deaths(P5,BOSS카이도우인수형≤199)  =>  MoveLoc L47→BOSS카이도우인수형 ; HP [φ] 관위의 암살자 산의 노인=100% ; HP [φ] 관위의 암살자 산의 노인=100% ; HP 병력=1% ; HP [φ] 관위의 암살자 산의 노인=100% ; HP [φ] 관위의 암살자 산의 노인=100%
+   Switch0 & Bring(현재P,BOSS카이도우인수형≥1,L12) & Deaths(P7,BOSS 카이도우≥200)  =>  Cnt(세력1,SOUND)=90 ; Cnt(P7,BOSS 카이도우)=0 ; Create 1×유닛70(현재P)@L36 ; Kill 유닛70(현재P)@L64 ; Create 1×Ｓ+ 나루토 선인모드(현재P)@L36 ; Order Ｓ+ 나루토 선인모드 ; Cnt(현재P,무적)+=20 ; Wait 1500ms ; Remove Ｓ+ 나루토 선인모드(현재P)
+   Switch0 & Bring(현재P,BOSS카이도우인수형≥1,L12) & Deaths(P7,BOSS카이도우인수형≥700)  =>  Cnt(세력1,SOUND)=92 ; Cnt(P7,BOSS카이도우인수형)=0 ; Cnt(P5,BOSS카이도우인수형)=10 ; Create 1×천 본 앵(P8)@L36 ; Kill 천 본 앵(P8)@L64
+   Switch0 & Bring(현재P,BOSS카이도우인수형≥1,L12) & Bring(세력1,병력≥1,L12)  =>  Cnt(P7,BOSS 카이도우)+=1 ; Cnt(P8,BOSS 카이도우)+=1
+   Switch0 & Bring(현재P,BOSS카이도우인수형≥1,L12)  =>  Cnt(P7,BOSS카이도우인수형)+=1
+   Switch0 & Bring(현재P,BOSS카이도우인수형≥1,L12)  =>  MoveLoc L36→BOSS카이도우인수형
+   Switch0 & Bring(현재P,BOSS카이도우인수형≥1,L12) & Deaths(P8,BOSS 카이도우≥400)  =>  Cnt(세력1,SOUND)=91 ; Cnt(세력1,SetLight데스값)=5 ; Cnt(P8,BOSS 카이도우)=0 ; Create 1×BOSS 쿠치키 뱌쿠야(P8)@L36 ; Remove BOSS 쿠치키 뱌쿠야(P8) ; Create 1×BOSS 쿠치키 뱌쿠야(P7)@L36 ; Kill BOSS 쿠치키 뱌쿠야(P7)@L64 ; Energy 병력=0% ; Shield 병력=0% ; HP 병력=100% ; HP 병력=100% ; HP 병력=100% ; HP 병력=100% ; Cnt(현재P,무적)=40
+## 131 BOSS 우치하 마다라  HP 3,000,000 SH 25,000 AR 230
+   Switch0 & Bring(현재P,BOSS 우치하 마다라≥1,L25) & Bring(세력1,병력≥1,L25)  =>  Cnt(P7,BOSS 우치하 마다라)+=1 ; Cnt(P8,BOSS 우치하 마다라)+=1
+   Switch0 & Bring(현재P,BOSS 우치하 마다라≥1,L25) & Deaths(P7,BOSS 우치하 마다라≥200)  =>  Cnt(세력1,SOUND)=100 ; Cnt(P7,BOSS 우치하 마다라)=0 ; Create 1×Ａ 이누야샤 붉은철쇄아(현재P)@L36 ; Kill Ａ 이누야샤 붉은철쇄아(현재P)@L64 ; Create 1×Ｓ+ 루피 기어·4(현재P)@L36 ; Order Ｓ+ 루피 기어·4 ; Cnt(현재P,무적)+=10 ; Wait 1000ms ; Remove Ｓ+ 루피 기어·4(현재P)
+   Switch0 & Bring(현재P,BOSS 우치하 마다라≥1,L25) & Deaths(P8,BOSS 우치하 마다라≥400)  =>  Cnt(P8,BOSS 우치하 마다라)=0 ; Create 1×천 본 앵(P8)@L36 ; Remove 천 본 앵(P8) ; Create 1×BOSS 우치하 마다라(P8)@L36 ; Energy 병력=0% ; Shield 병력=0% ; HP 병력=100% ; HP 병력=100% ; HP 병력=100% ; HP 병력=100%
+   Switch0 & Bring(현재P,BOSS 우치하 마다라≥1,L25)  =>  MoveLoc L36→BOSS 우치하 마다라
+## 133 BOSS 마다라 육도  HP 4,000,000 SH 30,000 AR 240
+   Switch0 & Bring(현재P,BOSS 마다라 육도≥1,L25) & Deaths(P8,BOSS 마다라 육도≥500)  =>  Cnt(세력1,SOUND)=102 ; Cnt(P8,BOSS 마다라 육도)=0 ; Create 1×천 본 앵(P8)@L36 ; Remove 천 본 앵(P8) ; Create 1×BOSS 마다라 육도(P8)@L25 ; Energy 병력=0% ; Shield 병력=0% ; HP 병력=100% ; HP 병력=100% ; HP 병력=100% ; HP 병력=100% ; Cnt(현재P,무적)=50
+   Switch0 & Bring(현재P,BOSS 마다라 육도≥1,L25)  =>  MoveLoc L36→BOSS 마다라 육도
+   Switch0 & Bring(현재P,BOSS 마다라 육도≥1,L25) & Deaths(P7,BOSS 마다라 육도≥200)  =>  Cnt(세력1,SOUND)=101 ; Cnt(P7,BOSS 마다라 육도)=0 ; Create 1×Ａ 이치고 호로화(현재P)@L36 ; Kill Ａ 이치고 호로화(현재P)@L64 ; Create 1×Ｙ엘자 홍앵(Benizakura)(현재P)@L36 ; Order Ｙ엘자 홍앵(Benizakura) ; Wait 1000ms ; Remove Ｙ엘자 홍앵(Benizakura)(현재P)
+   Switch0 & Bring(현재P,BOSS 마다라 육도≥1,L25) & Bring(세력1,병력≥1,L25)  =>  Cnt(P7,BOSS 마다라 육도)+=1 ; Cnt(P8,BOSS 마다라 육도)+=1
+   Switch0 & Bring(현재P,BOSS 마다라 육도≥1,L25)  =>  Cnt(P5,BOSS 우치하 마다라)+=1
+   Command(현재P,BOSS 마다라 육도≥1) & Deaths(P5,BOSS 마다라 육도≥30) & Deaths(P5,BOSS 마다라 육도≤108)  =>  Cnt(세력1,SetLight데스값)=5 ; Shield 병력=0% ; Order 병력
+## 135 BOSS 아이젠 소스케  HP 4,000,000 SH 35,000 AR 250
+   Switch0 & Bring(현재P,BOSS 아이젠 소스케≥1,L26) & Deaths(P7,BOSS 아이젠 소스케≥200)  =>  Kill BOSS 아이젠 소스케(P8)@L64 ; Cnt(P7,BOSS 아이젠 소스케)=0 ; Create 1×적(赫)(현재P)@L36 ; Kill 적(赫)(현재P)@L64 ; Create 1×BOSS 아이젠 소스케(P8)@L36
+   Switch0 & Bring(현재P,BOSS 아이젠 소스케≥1,L26) & Bring(세력1,병력≥1,L26)  =>  Cnt(P7,BOSS 아이젠 소스케)+=1 ; Cnt(P8,BOSS 아이젠 소스케)+=1
+   Switch0 & Bring(현재P,BOSS 아이젠 소스케≥1,L26) & Deaths(P8,BOSS 아이젠 소스케≥300)  =>  Cnt(세력1,SOUND)=110 ; Cnt(P8,BOSS 아이젠 소스케)=0 ; Cnt(현재P,무적)=60 ; Create 1×[ψ] 이치고 천년혈전(현재P)@L36 ; Kill [ψ] 이치고 천년혈전(현재P)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 아이젠 소스케 ; Wait 1ms ; Shield 병력=0% ; Energy 병력=0% ; Create 1×Ｙ 셋쇼마루 대요괴(현재P)@L36 ; Kill Ｙ 셋쇼마루 대요괴(현재P)@L64
+## 132 BOSS 아이젠 봉옥  HP 5,000,000 SH 40,000 AR 255
+   Bring(현재P,BOSS 아이젠 봉옥≥1,L26) & Deaths(P5,BOSS 아이젠 봉옥≥90) & Deaths(P5,BOSS 아이젠 봉옥≤92)  =>  Cnt(세력1,SOUND)=113
+   Switch0 & Bring(현재P,BOSS 아이젠 봉옥≥1,L26) & Deaths(P7,BOSS 아이젠 봉옥≥200)  =>  Kill BOSS 아이젠 봉옥(P8)@L64 ; Cnt(P7,BOSS 아이젠 봉옥)=0 ; Create 1×적(赫)(현재P)@L36 ; Kill 적(赫)(현재P)@L64 ; Create 1×BOSS 아이젠 봉옥(P8)@L36
+   Command(현재P,BOSS 아이젠 봉옥≥1) & Bring(현재P,BOSS 아이젠 봉옥=0,L26)  =>  MoveUnit BOSS 아이젠 봉옥
+   Switch0 & Bring(현재P,BOSS 아이젠 봉옥≥1,L26) & Deaths(P5,BOSS 아이젠 소스케≥800)  =>  Cnt(세력1,SOUND)=112 ; Cnt(P5,BOSS 아이젠 소스케)=0 ; Cnt(P5,BOSS 아이젠 봉옥)=10 ; Create 1×ＨＺ탄지로 해의호흡(P8)@L26 ; Kill ＨＺ탄지로 해의호흡(P8)@L64 ; MoveLoc L47→병력 ; MoveLoc L47→병력 ; MoveLoc L47→병력
+   Switch0 & Bring(현재P,BOSS 아이젠 봉옥≥1,L26)  =>  Cnt(P5,BOSS 아이젠 소스케)+=1
+   Command(현재P,BOSS 아이젠 봉옥≥1) & Deaths(P5,BOSS 아이젠 봉옥≥40) & Deaths(P5,BOSS 아이젠 봉옥≤89)  =>  Create 1×Ｂ 나루토 미수화(현재P)@L47 ; Kill Ｂ 나루토 미수화(현재P)@L64
+   Switch0 & Bring(현재P,BOSS 아이젠 봉옥≥1,L26)  =>  MoveLoc L36→BOSS 아이젠 봉옥
+   Switch0 & Bring(현재P,BOSS 아이젠 봉옥≥1,L26) & Bring(세력1,병력≥1,L26)  =>  Cnt(P7,BOSS 아이젠 봉옥)+=1 ; Cnt(P8,BOSS 아이젠 봉옥)+=1
+   Switch0 & Bring(현재P,BOSS 아이젠 봉옥≥1,L26) & Deaths(P8,BOSS 아이젠 봉옥≥300)  =>  Cnt(세력1,SOUND)=111 ; Cnt(P8,BOSS 아이젠 봉옥)=0 ; Cnt(현재P,무적)=80 ; Create 1×[ψ] 이치고 천년혈전(현재P)@L36 ; Kill [ψ] 이치고 천년혈전(현재P)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 아이젠 봉옥 ; Wait 1ms ; Shield 병력=0% ; Energy 병력=0% ; Create 1×Ｓ 이치고 바이저드(현재P)@L36 ; Kill Ｓ 이치고 바이저드(현재P)@L64
+## 143 BOSS 프리저  HP 6,000,000 SH 50,000 AR 255
+   Elapsed≥30 & Bring(P8,BOSS 프리저=0,L87) & Deaths(P8,BOSS 프리저≥1)  =>  Create 0×BOSS 셀 인조인간(현재P)@L87 ; Create 0×LV.6 괴인(현재P)@L87 ; RunAI
+   Switch0 & Bring(현재P,BOSS 프리저≥1,L93) & Deaths(P5,BOSS 프리저≥300) & Bring(P5,병력≥1,L93) & Switch0  =>  Cnt(세력1,SOUND)=71 ; Cnt(P5,BOSS 프리저)=0 ; Cnt(현재P,무적)=50 ; Create 1×[β] 베지트 블루(현재P)@L36 ; Kill [β] 베지트 블루(현재P)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 프리저 ; Wait 1ms ; Shield 병력=0% ; Energy 병력=0% ; Create 1×Ｓ 이누야샤 금강철쇄아(현재P)@L36 ; Kill Ｓ 이누야샤 금강철쇄아(현재P)@L64
+   Switch0 & Bring(현재P,BOSS 프리저≥1,L93) & Deaths(P7,BOSS 프리저≥180) & Switch0  =>  Cnt(세력1,SOUND)=120 ; Cnt(P7,BOSS 프리저)=0 ; Create 1×적(赫)(현재P)@L36 ; Kill 적(赫)(현재P)@L64 ; Create 1×유닛8(현재P)@L36 ; Order 유닛8 ; Wait 1000ms ; Kill 유닛8(현재P)@L64 ; Create 1×BOSS † 십 계 †(현재P)@L36
+   Switch0 & Bring(현재P,BOSS 프리저≥1,L93) & Switch0  =>  Cnt(P7,BOSS 프리저)+=1 ; Cnt(P5,BOSS 프리저)+=1
+   Switch0 & Bring(현재P,BOSS 프리저≥1,L93)  =>  MoveLoc L36→BOSS 프리저
+   Switch0 & Bring(현재P,BOSS 프리저≥1,L93) & Deaths(P5,BOSS 프리저≥340) & Bring(P5,병력≥1,L93) & Switch0  =>  Cnt(세력1,SOUND)=71 ; Cnt(P5,BOSS 프리저)=0 ; Cnt(현재P,무적)=50 ; Create 1×[β] 베지트 블루(현재P)@L36 ; Kill [β] 베지트 블루(현재P)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 프리저 ; Wait 1ms ; Shield 병력=0% ; Energy 병력=0% ; Create 1×Ｓ 이누야샤 금강철쇄아(현재P)@L36 ; Kill Ｓ 이누야샤 금강철쇄아(현재P)@L64
+   Switch0 & Bring(현재P,BOSS 프리저≥1,L93)  =>  MoveLoc L36→BOSS 프리저
+   Switch0 & Command(현재P,BOSS 프리저=0) & Switch0  =>  
+## 144 BOSS 셀 인조인간  HP 4,000,000 SH 28,000 AR 255
+   Switch0 & Bring(현재P,BOSS 셀 인조인간≥1,L130)  =>  MoveLoc L36→BOSS 셀 인조인간
+   Command(현재P,BOSS 셀 인조인간≥1)  =>  
+   Bring(현재P,BOSS 셀 인조인간≥1,L130) & Switch0  =>  Cnt(P7,BOSS 셀 인조인간)+=2 ; Cnt(P5,BOSS 셀 인조인간)+=2 ; Cnt(P7,유닛12)+=1
+   Switch0 & Bring(현재P,BOSS 셀 인조인간≥1,L130) & Deaths(P7,유닛12≥500)  =>  Kill BOSS 셀 인조인간(P8)@L130 ; Cnt(세력1,SOUND)=130 ; Cnt(P7,유닛12)=0 ; Order 병력 ; Create 1×유닛84(현재P)@L36 ; Kill 유닛84(현재P)@L64 ; Create 1×BOSS 셀 인조인간(P8)@L36
+   Switch0 & Bring(현재P,BOSS 셀 인조인간≥1,L130) & Deaths(P7,BOSS 셀 인조인간≥38)  =>  Cnt(P7,BOSS 셀 인조인간)=0 ; Create 1×적(赫)(P5)@L36 ; Kill 적(赫)(P5)@L64 ; Cnt(P5,유닛12)+=1
+   Switch0 & Bring(현재P,BOSS 셀 인조인간≥1,L130) & Deaths(P5,BOSS 셀 인조인간≥300) & Bring(세력1,병력≥1,L130)  =>  Cnt(세력1,SOUND)=71 ; Cnt(P5,BOSS 셀 인조인간)=0 ; Cnt(현재P,무적)=20 ; Create 1×[β] 베지트 블루(현재P)@L36 ; Kill [β] 베지트 블루(현재P)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 셀 인조인간 ; Wait 1ms ; Shield 병력=0% ; Energy 병력=0% ; Create 1×Ｓ 이누야샤 금강철쇄아(현재P)@L36 ; Kill Ｓ 이누야샤 금강철쇄아(현재P)@L64
+   Bring(현재P,BOSS 셀 인조인간≥1,L130) & Switch0  =>  Cnt(P7,BOSS 셀 인조인간)+=3 ; Cnt(P5,BOSS 셀 인조인간)+=3 ; Cnt(P7,유닛12)+=2
+   Elapsed≥30 & Bring(P8,BOSS 셀 인조인간=0,L87) & Deaths(P8,BOSS 셀 인조인간≥1)  =>  Create 0×BOSS 마인부우(현재P)@L87 ; Create 0×LV.6 괴인(현재P)@L87 ; RunAI
+   Bring(현재P,BOSS 셀 인조인간≥1,L130) & Switch0 & Switch0  =>  Cnt(P7,BOSS 셀 인조인간)+=1 ; Cnt(P5,BOSS 셀 인조인간)+=1
+   Command(현재P,BOSS 셀 인조인간≥1)  =>  
+   Switch0 & Bring(현재P,BOSS 셀 인조인간≥1,L130) & Deaths(P5,유닛12≥4)  =>  Cnt(세력1,SOUND)=131 ; Cnt(P5,유닛12)=0 ; Create 1×유닛12(현재P)@L36 ; Order 유닛12 ; Create 1×폭파(P5)@L36 ; Kill 폭파(P5)@L64 ; Wait 750ms ; Kill 유닛12(현재P)@L64
+## 146 BOSS 마인부우  HP 1,000 SH 0 AR 255
+   Elapsed≥30 & Bring(P8,BOSS 마인부우=0,L87) & Deaths(P8,BOSS 마인부우≥1)  =>  Create 0×BOSS 골든 프리저(현재P)@L87 ; Create 0×LV.7 외계인(현재P)@L87 ; RunAI
+   Bring(현재P,BOSS 마인부우≥1,L42) & Switch0 & Switch0  =>  Cnt(P7,BOSS 마인부우)+=3 ; Cnt(P5,BOSS 마인부우)+=3
+   Command(현재P,BOSS 마인부우≥1)  =>  
+   Bring(현재P,BOSS 마인부우≥1,L42) & Switch0 & Switch0  =>  Cnt(P7,BOSS 마인부우)+=4 ; Cnt(P5,BOSS 마인부우)+=4
+   Switch0 & Bring(현재P,BOSS 마인부우≥1,L42) & Deaths(P7,BOSS 마인부우≥100)  =>  Kill 폭발(현재P)@L64 ; Cnt(P7,BOSS 마인부우)=0 ; Create 1×폭발(현재P)@L36 ; Create 1×유닛70(현재P)@L36 ; Order 유닛70 ; Kill 훈련병단(P5)@L36
+   Bring(현재P,BOSS 마인부우≥1,L42) & Switch0 & Switch0  =>  Cnt(P7,BOSS 마인부우)+=2 ; Cnt(P5,BOSS 마인부우)+=2
+## 138 BOSS 골든 프리저  HP 7,300,000 SH 55,000 AR 255
+   Switch0 & Bring(현재P,BOSS 골든 프리저≥1,L93) & Switch0  =>  Cnt(P7,BOSS 프리저)+=2 ; Cnt(P5,BOSS 프리저)+=2
+   Elapsed≥30 & Bring(P8,BOSS 골든 프리저=0,L87) & Deaths(P8,BOSS 골든 프리저≥1)  =>  Create 0×BOSS 히트 암살자(현재P)@L87 ; Create 0×LV.7 외계인(현재P)@L87 ; RunAI
+   Switch0 & Bring(현재P,BOSS 골든 프리저≥1,L93)  =>  MoveLoc L36→BOSS 골든 프리저
+   Switch0 & Bring(현재P,LV.6 괴인=0,L94) & Bring(현재P,BOSS 골든 프리저≥1,L93)  =>  Create 1×LV.6 괴인(현재P)@L94
+   Switch0 & Bring(현재P,BOSS 골든 프리저≥1,L93) & Deaths(P5,BOSS 프리저≥320) & Bring(P5,병력≥1,L93) & Switch0  =>  Cnt(세력1,SOUND)=71 ; Cnt(P5,BOSS 프리저)=0 ; Cnt(현재P,무적)=50 ; Create 1×[β] 베지트 블루(현재P)@L36 ; Kill [β] 베지트 블루(현재P)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 골든 프리저 ; Wait 1ms ; Shield 병력=0% ; Energy 병력=0% ; Create 1×Ｓ 이누야샤 금강철쇄아(현재P)@L36 ; Kill Ｓ 이누야샤 금강철쇄아(현재P)@L64
+   Switch0 & Bring(현재P,BOSS 골든 프리저≥1,L93) & Deaths(P7,BOSS 프리저≥180) & Switch0  =>  Cnt(세력1,SOUND)=120 ; Cnt(P7,BOSS 프리저)=0 ; Create 1×적(赫)(현재P)@L36 ; Kill 적(赫)(현재P)@L64 ; Create 1×유닛43(현재P)@L36 ; Order 유닛43 ; Wait 750ms ; Kill 유닛43(현재P)@L64 ; Create 1×BOSS † 십 계 †(현재P)@L36
+## 204 BOSS 히트 암살자  HP 7,777,777 SH 51,000 AR 250
+   Elapsed≥30 & Bring(P8,BOSS 히트 암살자=0,L87) & Deaths(P8,BOSS 히트 암살자≥1)  =>  Create 0×BOSS 합체자마스(현재P)@L87 ; Create 0×LV.7 외계인(현재P)@L87 ; RunAI
+   Switch0 & Bring(현재P,BOSS 히트 암살자≥1,L130) & Deaths(P5,BOSS 히트 암살자≥200) & Bring(세력1,병력≥1,L130)  =>  Cnt(세력1,SOUND)=71 ; Cnt(P5,BOSS 히트 암살자)=0 ; Cnt(현재P,무적)=30 ; Create 1×[β] 베지트 블루(현재P)@L36 ; Kill [β] 베지트 블루(현재P)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 히트 암살자 ; Wait 1ms ; Shield 병력=0% ; Energy 병력=0% ; Create 1×Ｓ 이누야샤 금강철쇄아(현재P)@L36 ; Kill Ｓ 이누야샤 금강철쇄아(현재P)@L64
+   Switch0 & Bring(현재P,BOSS 히트 암살자≥1,L130) & Deaths(P7,BOSS 히트 암살자≥103)  =>  Cnt(세력1,SOUND)=150 ; Cnt(P7,BOSS 히트 암살자)=0 ; MoveLoc L46→병력 ; Order 병력 ; Create 1×유도탄(P5)@L36 ; Kill 유도탄(P5)@L64 ; Cnt(P5,유닛60)+=1
+   Switch0 & Bring(현재P,BOSS 히트 암살자≥1,L136)  =>  Cnt(P7,BOSS 보타모)+=2
+   Switch0 & Bring(현재P,BOSS 히트 암살자≥1,L136)  =>  MoveLoc L36→BOSS 히트 암살자 ; Cnt(P5,BOSS 히트 암살자)+=2 ; Cnt(P7,BOSS 히트 암살자)+=2
+   Switch0 & Bring(현재P,BOSS 히트 암살자≥1,L136) & Deaths(P7,BOSS 히트 암살자≥156)  =>  Cnt(현재P,무적)+=10 ; Cnt(세력1,SOUND)=150 ; Cnt(P7,BOSS 히트 암살자)=0 ; MoveLoc L46→병력 ; Order 병력 ; Create 1×유도탄(P5)@L36 ; Kill 유도탄(P5)@L64 ; Cnt(P5,유닛60)+=1
+   Switch0 & Bring(현재P,BOSS 히트 암살자≥1,L130) & Deaths(P5,유닛60≥3)  =>  Cnt(세력1,SOUND)=151 ; Cnt(P5,유닛60)=0 ; MoveUnit 병력 ; Create 1×유닛60(현재P)@L36 ; Order 유닛60 ; Create 1×Ａ 오공 슈퍼사이어인2(P5)@L36 ; Kill Ａ 오공 슈퍼사이어인2(P5)@L64 ; Wait 750ms ; Kill 유닛60(현재P)@L64
+   Switch0 & Command(현재P,BOSS 히트 암살자≥1) & Deaths(P7,BOSS 보타모≥1201)  =>  Cnt(세력1,SOUND)=152 ; Cnt(P8,BOSS 보타모)=10 ; Cnt(P7,BOSS 보타모)=0
+   Command(현재P,BOSS 히트 암살자≥1)  =>  
+   Switch0 & Bring(현재P,BOSS 히트 암살자≥1,L136) & Deaths(P5,BOSS 히트 암살자≥200) & Bring(세력1,병력≥1,L136)  =>  Cnt(세력1,SOUND)=71 ; Cnt(P5,BOSS 히트 암살자)=0 ; Cnt(현재P,무적)=50 ; Create 1×[β] 베지트 블루(현재P)@L36 ; Kill [β] 베지트 블루(현재P)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 히트 암살자 ; Wait 1ms ; Shield 병력=0% ; Energy 병력=0% ; Create 1×Ｓ 이누야샤 금강철쇄아(현재P)@L36 ; Kill Ｓ 이누야샤 금강철쇄아(현재P)@L64
+## 145 BOSS 블랙 오공  HP 1,400 SH 100 AR 255
+   Switch0 & Bring(현재P,BOSS 블랙 오공≥1,L42)  =>  MoveLoc L36→BOSS 블랙 오공
+   Bring(현재P,BOSS 블랙 오공≥1,L42) & Switch0  =>  Cnt(P7,BOSS 블랙 오공)+=2 ; Cnt(P5,BOSS 블랙 오공)+=1
+   Switch0 & Bring(현재P,BOSS 블랙 오공≥1,L42) & Deaths(P5,BOSS 블랙 오공≥1000) & Bring(현재P,BOSS 블랙 오공≥1,L26)  =>  Cnt(세력1,SOUND)=71 ; Cnt(P5,BOSS 블랙 오공)=0 ; Cnt(현재P,무적)=50 ; Create 1×[β] 베지트 블루(현재P)@L36 ; Kill [β] 베지트 블루(현재P)@L64 ; Wait 5ms ; MoveUnit BOSS 블랙 오공
+   Switch0 & Bring(현재P,BOSS 블랙 오공≥1,L42) & Deaths(P5,BOSS 블랙 오공≥1000) & Bring(현재P,BOSS 블랙 오공≥1,L12)  =>  Cnt(세력1,SOUND)=71 ; Cnt(P5,BOSS 블랙 오공)=0 ; Cnt(현재P,무적)=50 ; Create 1×[β] 베지트 블루(현재P)@L36 ; Kill [β] 베지트 블루(현재P)@L64 ; Wait 5ms ; MoveUnit BOSS 블랙 오공
+   Switch0 & Bring(현재P,BOSS 블랙 오공≥1,L42) & Deaths(P7,BOSS 블랙 오공≥150)  =>  Cnt(P7,BOSS 블랙 오공)=0 ; Create 1×유도탄(현재P)@L36 ; Kill 유도탄(현재P)@L64 ; Create 1×LV.7 외계인(현재P)@L36 ; Order LV.7 외계인 ; Energy 병력=0% ; Kill 훈련병단(P5)@L36
+## 158 BOSS 슈퍼사이어인 케프라  HP 8,000,000 SH 62,500 AR 255
+   Switch0 & Bring(현재P,BOSS 슈퍼사이어인 케프라≥1,L136) & Switch0  =>  Cnt(P8,BOSS 슈퍼사이어인 케프라)+=2
+   Switch0 & Bring(현재P,BOSS 슈퍼사이어인 케프라≥1,L136) & Deaths(P5,BOSS 히트 암살자≥200) & Bring(세력1,병력≥1,L136)  =>  Cnt(세력1,SOUND)=71 ; Cnt(P5,BOSS 히트 암살자)=0 ; Cnt(현재P,무적)=40 ; Create 1×[β] 베지트 블루(현재P)@L36 ; Kill [β] 베지트 블루(현재P)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 슈퍼사이어인 케프라 ; Wait 1ms ; Shield 병력=0% ; Energy 병력=0% ; Create 1×Ｓ 이누야샤 금강철쇄아(현재P)@L36 ; Kill Ｓ 이누야샤 금강철쇄아(현재P)@L64
+   Switch0 & Bring(현재P,BOSS 슈퍼사이어인 케프라≥1,L136)  =>  MoveLoc L36→BOSS 슈퍼사이어인 케프라 ; Cnt(P5,BOSS 슈퍼사이어인 케프라)+=1 ; Cnt(P5,BOSS 히트 암살자)+=1 ; Cnt(P7,BOSS 슈퍼사이어인 케프라)+=1
+   Switch0 & Bring(현재P,BOSS 슈퍼사이어인 케프라≥1,L136) & Deaths(P5,BOSS 슈퍼사이어인 케프라≥180)  =>  Cnt(P5,BOSS 슈퍼사이어인 케프라)=0 ; Create 1×적(赫)(현재P)@L36 ; Order 적(赫) ; Wait 750ms ; Kill 적(赫)(현재P)@L64 ; Create 0×LV.7 외계인(현재P)@L36
+   Switch0 & Bring(현재P,BOSS 슈퍼사이어인 케프라≥1,L136) & Switch0  =>  Cnt(P8,BOSS 슈퍼사이어인 케프라)+=1
+   Switch0 & Bring(현재P,BOSS 슈퍼사이어인 케프라≥1,L136) & Deaths(P7,BOSS 슈퍼사이어인 케프라≥300)  =>  Kill 폭발(현재P)@L64 ; Cnt(현재P,무적)+=20 ; Cnt(세력1,SOUND)=160 ; Cnt(P7,BOSS 슈퍼사이어인 케프라)=0 ; MoveUnit 병력 ; Create 1×폭발(현재P)@L36 ; Create 1×BOSS 마신 핸드릭슨(P5)@L36 ; Kill BOSS 마신 핸드릭슨(P5)@L64
+   Command(현재P,BOSS 슈퍼사이어인 케프라≥1)  =>  
+## 161 BOSS 파괴신 톳 포  HP 8,300,000 SH 65,535 AR 255
+   Command(현재P,BOSS 파괴신 톳 포≥1)  =>  
+   Switch0 & Bring(현재P,BOSS 파괴신 톳 포≥1,L136) & Switch0  =>  Cnt(P8,BOSS 파괴신 톳 포)+=2
+   Switch0 & Bring(현재P,BOSS 파괴신 톳 포≥1,L136) & Deaths(P5,BOSS 히트 암살자≥200) & Bring(세력1,병력≥1,L136)  =>  Cnt(세력1,SOUND)=71 ; Cnt(P5,BOSS 히트 암살자)=0 ; Cnt(현재P,무적)=40 ; Create 1×[β] 베지트 블루(현재P)@L36 ; Kill [β] 베지트 블루(현재P)@L64 ; Wait 1ms ; MoveLoc L46→병력 ; Wait 1ms ; MoveUnit BOSS 파괴신 톳 포 ; Wait 1ms ; Shield 병력=0% ; Energy 병력=0% ; Create 1×Ｓ 이누야샤 금강철쇄아(현재P)@L36 ; Kill Ｓ 이누야샤 금강철쇄아(현재P)@L64
+   Switch0 & Command(현재P,BOSS 파괴신 톳 포≥1) & Deaths(P8,BOSS 파괴신 톳 포≥1500)  =>  Cnt(세력1,SOUND)=171 ; Cnt(P8,BOSS 마겟타)=10 ; Cnt(P8,BOSS 파괴신 톳 포)=0
+   Switch0 & Bring(현재P,BOSS 파괴신 톳 포≥1,L136) & Switch0  =>  Cnt(P8,BOSS 파괴신 톳 포)+=1
+   Switch0 & Bring(현재P,BOSS 파괴신 톳 포≥1,L136) & Deaths(P5,BOSS 파괴신 톳 포≥180)  =>  Cnt(P5,BOSS 파괴신 톳 포)=0 ; Create 1×유닛70(현재P)@L36 ; Order 유닛70 ; Wait 750ms ; Kill 유닛70(현재P)@L64 ; Create 0×Lv.8 파 괴 신(현재P)@L36
+   Switch0 & Bring(현재P,BOSS 파괴신 톳 포≥1,L136)  =>  MoveLoc L36→BOSS 파괴신 톳 포 ; MoveLoc L47→BOSS 파괴신 톳 포 ; Cnt(P5,BOSS 파괴신 톳 포)+=1 ; Cnt(P5,BOSS 히트 암살자)+=1 ; Cnt(P7,BOSS 파괴신 톳 포)+=1
+   Switch0 & Bring(현재P,BOSS 파괴신 톳 포≥1,L136) & Deaths(P7,BOSS 파괴신 톳 포≥350)  =>  Kill 폭발(현재P)@L64 ; Cnt(현재P,무적)+=30 ; Cnt(세력1,SOUND)=170 ; Cnt(P7,BOSS 파괴신 톳 포)=0 ; HP 병력=5% ; Create 1×적(赫)(P5)@L36 ; Kill 적(赫)(P5)@L64 ; HP [φ] 관위의 암살자 산의 노인=100%
+## 197 BOSS 회색의 지 렌  HP 9,999 SH 1 AR 255
+## 25 BOSS 마겟타  HP 1,800,000 SH 65,000 AR 255
+   Command(현재P,Z 에스카노르 라이온씬≥1) & Command(현재P,BOSS 마겟타≥1)  =>  Cnt(현재P,BOSS 마겟타)+=1
+   Command(현재P,Z 에스카노르 라이온씬≥1) & Command(현재P,BOSS 마겟타≥1)  =>  Cnt(현재P,BOSS 마겟타)+=1
+   Switch0 & Bring(현재P,BOSS 마겟타≥1,L130) & Deaths(P5,BOSS 마겟타≥180)  =>  Cnt(P5,BOSS 마겟타)=0 ; Create 1×적(赫)(현재P)@L36 ; Order 적(赫) ; Create 1×Ｘ 루피 다섯번째 황제(P5)@L36 ; Kill Ｘ 루피 다섯번째 황제(P5)@L64 ; Wait 750ms ; Kill 적(赫)(현재P)@L64
+   Command(현재P,Z 에스카노르 라이온씬≥1) & Command(현재P,BOSS 마겟타≥1)  =>  Cnt(현재P,BOSS 마겟타)+=1
+   Command(현재P,Z 에스카노르 라이온씬≥1) & Command(현재P,BOSS 마겟타≥1)  =>  Cnt(현재P,BOSS 마겟타)+=1
+   Switch0 & Bring(현재P,BOSS 마겟타≥1,L130)  =>  MoveLoc L36→BOSS 마겟타 ; Cnt(P5,BOSS 마겟타)+=1
+## 81 BOSS 합체자마스  HP 8,000,000 SH 65,000 AR 255
+   Command(현재P,BOSS 합체자마스≥1)  =>  
+   Bring(현재P,ＨＺ에렌 거인화=3,L68) & C21 & Command(세력1,Z 리바이 병장=0) & Command(세력1,BOSS 합체자마스=0) & Deaths(현재P,신화≤5)  =>  
+   Switch0 & Command(현재P,BOSS 합체자마스≥1)  =>  MoveLoc L36→BOSS 합체자마스 ; A53 ; Cnt(P7,BOSS 블랙 오공)+=2 ; Cnt(P7,BOSS 합체자마스)+=2
+   Switch0 & Bring(현재P,BOSS 합체자마스≥1,L42) & Deaths(P7,BOSS 블랙 오공≥150)  =>  Cnt(P7,BOSS 블랙 오공)=0 ; Create 1×유도탄(현재P)@L36 ; Kill 유도탄(현재P)@L64 ; Create 1×LV.7 외계인(현재P)@L36 ; Order LV.7 외계인 ; Energy 병력=0% ; Order 병력 ; Kill 훈련병단(P5)@L36
+   Switch0 & Bring(현재P,BOSS 합체자마스≥1,L42) & Deaths(P7,BOSS 합체자마스≥200)  =>  Cnt(P7,BOSS 합체자마스)=0 ; Create 1×유닛70(현재P)@L36 ; Order 유닛70 ; Wait 500ms ; Kill 유닛70(현재P)@L36
+## 203 BOSS 캬베 초사이언  HP 4,000,000 SH 40,000 AR 220
+   Switch0 & Bring(현재P,BOSS 캬베 초사이언≥1,L130) & Deaths(P5,BOSS 캬베 초사이언≥180)  =>  Cnt(P5,BOSS 캬베 초사이언)=0 ; Create 1×유닛43(현재P)@L36 ; Order 유닛43 ; Create 1×Ｙ 토시로 빙륜환(P5)@L36 ; Kill Ｙ 토시로 빙륜환(P5)@L64 ; Wait 750ms ; Kill 유닛43(현재P)@L64
+   Switch0 & Bring(현재P,BOSS 캬베 초사이언≥1,L130)  =>  MoveLoc L36→BOSS 캬베 초사이언 ; Cnt(P5,BOSS 캬베 초사이언)+=1
+## 210 BOSS 보타모  HP 400 SH 1 AR 200
+   Switch0 & Bring(현재P,BOSS 보타모≥1,L130) & Deaths(P5,BOSS 보타모≥180)  =>  Cnt(P5,BOSS 보타모)=0 ; Create 1×유닛70(현재P)@L36 ; Order 유닛70 ; Create 1×ＨＺ탄지로 해의호흡(P5)@L36 ; Kill ＨＺ탄지로 해의호흡(P5)@L64 ; Wait 750ms ; Kill 유닛70(현재P)@L64
+   Switch0 & Bring(현재P,BOSS 보타모≥1,L130)  =>  MoveLoc L36→BOSS 보타모 ; Cnt(P5,BOSS 보타모)+=1
+## 211 BOSS 프로스트  HP 7,000,000 SH 25,000 AR 210
+   Command(현재P,BOSS 프로스트≥1) & Bring(현재P,BOSS 프로스트=0,L136) & Switch0  =>  MoveUnit BOSS 프로스트
+   Switch0 & Bring(현재P,BOSS 프로스트≥1,L130) & Deaths(P5,BOSS 프로스트≥180)  =>  Cnt(P5,BOSS 프로스트)=0 ; Create 1×유닛8(현재P)@L36 ; Order 유닛8 ; Create 1×BOSS 짐슴형거인(P5)@L36 ; Kill BOSS 짐슴형거인(P5)@L64 ; Wait 750ms ; Kill 유닛8(현재P)@L64
+   Command(현재P,BOSS 프로스트≥1) & Bring(현재P,BOSS 프로스트=0,L130)  =>  MoveUnit BOSS 프로스트
+   Switch0 & Bring(현재P,BOSS 프로스트≥1,L130)  =>  MoveLoc L36→BOSS 프로스트 ; Cnt(P5,BOSS 프로스트)+=1
+## 153 BOSS 자마스 불사신  HP 0 SH 1 AR 255
+   Switch0 & Command(현재P,BOSS 자마스 불사신≥1) & Bring(현재P,BOSS 자마스 불사신=0,L36)  =>  MoveUnit BOSS 자마스 불사신 ; RunAI
