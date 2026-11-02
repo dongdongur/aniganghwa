@@ -194,3 +194,11 @@
   O 새 영웅 대사 자리 (config.py NEW_VOICE) : sound/staredit/wav 에 파일만 넣으면 자동 연결
      RENGOKU / GIYU / GON / GON10 / ITADORI / MERUEM / TANJIRO / YORIICHI .wav (H 스킬), 이름_U.wav (각성 궁극기)
      권장 : 22050Hz 16bit 모노 wav, 3~5초
+
+[11단계] 보스 패턴 피하기 + 코드 저장소
+  O 보스 패턴 피하기 (config.py TELE_ / INF_TELE, extras.py tele_start / tele_tick, 로케이션 170)
+     7장 이후 모든 보스 + 무한성 보스 : 주기마다 우리 영웅 1명 발밑에 스캔 표식 + 미니맵 핑 + 경고 문구
+     약 2초 뒤 그 자리(반지름 3칸) 폭발 -> 남아 있으면 체력 N% 로 떨어짐 (죽지는 않음). 표식은 고정이라 빼면 피해 없음
+     대상은 플레이어를 돌아가며 고름. 7·8장 15초마다 50% / 9~11장 12.5초마다 30% / 레이드·FINAL 10초마다 30%
+     무한성 : 아카자 40% -> ... -> 무잔 최종 7.5초마다 20%
+  O 저장소용 CLAUDE.md (작업 인수인계) / setup.sh (새 세션 준비) 추가

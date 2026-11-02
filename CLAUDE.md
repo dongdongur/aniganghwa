@@ -26,7 +26,7 @@ python3 build.py
 ## 검증 (에뮬레이터) — 빌드 후 반드시 덤프부터 새로!
 ```
 cd /home/claude/tools
-python3 runemu.py                         # emu_dump.pkl 갱신 (이거 안 하면 옛 빌드로 테스트됨!)
+AGW_FAST=1 python3 runemu.py              # emu_dump.pkl 갱신 (안 하면 옛 빌드로 테스트됨! AGW_FAST=1 = 시간 단축, 없으면 한 판 1시간)
 DIFF=31 KD=4 python3 drive.py 2400 > /tmp/run.txt   # HARD 전체 판 (약 10분, <<VICTORY>> 확인)
 #  DIFF: 난이도, KD: 처치 지연, ALLP=1: 4인
 python3 tests/test_inf.py   # 무한성 / test_tele: 보스 패턴 피하기 / test_cr: 합동기·보스러시

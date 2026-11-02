@@ -13,6 +13,8 @@ BOT = os.environ.get('BOT', '1') == '1'
 import config as C
 WAVES = {ch['wave'] for ch in C.CHAPTERS}
 KD = int(os.environ.get('KD','10'))
+KD2 = int(os.environ.get('KD2', os.environ.get('KD','10')))   # 7장부터 보스 처치 지연
+late = False
 t0 = time.time(); shown = 0
 def kill(u, by=0):
     e.units.remove(u)
@@ -31,11 +33,25 @@ for f in range(SECS * 16):
         for u in [u for u in e.units if u.owner == 7 and u.type in WAVES and f - u.born > 16*8]:
             kill(u)
         # 보스: P6 유닛이 10초 살아있으면 처치
-        for u in [u for u in e.units if u.owner == 5 and f - u.born > 16*KD and not u.inv]:
+        for u in [u for u in e.units if u.owner == 5 and f - u.born > 16*(KD2 if late else KD) and not u.inv]:
             kill(u)
     while shown < len(e.log):
         fr, cp, txt = e.log[shown]; shown += 1
+        if 'Chapter 7-1' in txt: late = True
+        if late and os.environ.get('HERO_IN'):
+            import re as _re
+            m_ = _re.search(r'Chapter (\d+-[\dR]+|8|FINAL)', txt) if 'Clear' not in txt else None
+            if m_:
+                import config as _C
+                for _ch in _C.CHAPTERS:
+                    for _st in _ch['stages']:
+                        if _st['name'] == m_.group(1).split()[0]:
+                            x0, y0, x1, y1 = e.loc(_st.get('check') or _st['arena'])
+                            hid = 9000 + fr
+                            e.units.append(Unit(hid, 89, 0, (x0+x1)//2, (y0+y1)//2, e.frame))
+                            print('   [test] hero into', _st['name'])
         if cp == 0 or cp > 7:
+            if os.environ.get('HERO_IN') and '경 고' in txt: hits_ = [u.hp for u in e.units if u.owner == 0 and u.type == 89]; print('   [test] hero hp', hits_[-3:])
             print('[%5.1fs P%d] %s' % (fr/16, cp+1, txt.replace('\n', ' / ')[:160]))
     if e.victory or e.defeat:
         break
